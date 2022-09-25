@@ -20,11 +20,32 @@ public class HomePage {
     @AndroidFindBy(accessibility = "startUserRegistrationCD")
     public MobileElement folderIcon;
 
-    @AndroidFindBy(accessibility = "showPopupWindowButtonCD")
-    public MobileElement displayPopUpWindow;
+    @AndroidFindBy(accessibility = "waitingButtonTestCD")
+    public MobileElement showProgressBarButton;
+
+    @AndroidFindBy(id = "io.selendroid.testapp:id/input_adds_check_box")
+    public MobileElement acceptAddsCheckBox;
 
     @AndroidFindBy(accessibility = "visibleButtonTestCD")
     public MobileElement displayTextView;
+
+    @AndroidFindBy(accessibility = "showToastButtonCD")
+    public MobileElement displayAToastButton;
+
+    @AndroidFindBy(accessibility = "showPopupWindowButtonCD")
+    public MobileElement displayPopUpWindow;
+
+    @AndroidFindBy(accessibility = "exceptionTestButtonCD")
+    public MobileElement throwUnhandledException;
+
+    @AndroidFindBy(id = "io.selendroid.testapp:id/topLevelElementTest")
+    public MobileElement displayAndFocusOnLayout;
+
+    @AndroidFindBy(id = "io.selendroid.testapp:id/touchTest")
+    public MobileElement touchActions;
+
+
+
 
 
 }

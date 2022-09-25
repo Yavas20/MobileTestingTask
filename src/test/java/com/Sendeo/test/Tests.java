@@ -51,6 +51,36 @@ public class Tests {
 
 
     @ParameterizedTest
+    @CsvFileSource(resources = "", numLinesToSkip = 1)
+    public void verifyHomePageTexts(String chromeIcon, String folderIcon, String showProgressBarButton,
+                                    String acceptAddsCheckBox, String displayTextWiev,
+                                    String displayAToast, String displayWindoePopup,
+                                    String throwUnhandledException, String displayAndFocusOnLayout,
+                                    String thouchActions) {
+
+        assertEquals(chromeIcon, homePage.chromeIcon.getAttribute("content-desc"));
+        assertEquals(folderIcon, homePage.folderIcon.getAttribute("content-desc"));
+        assertEquals(showProgressBarButton, homePage.showProgressBarButton.getText());
+        assertEquals(acceptAddsCheckBox, homePage.acceptAddsCheckBox.getText());
+        assertEquals(displayTextWiev, homePage.displayTextView.getText());
+        assertEquals(displayAToast, homePage.displayAToastButton.getText());
+        assertEquals(displayWindoePopup, homePage.displayPopUpWindow.getText());
+        assertEquals(throwUnhandledException, homePage.throwUnhandledException.getText());
+        assertEquals(displayAndFocusOnLayout, homePage.displayAndFocusOnLayout.getText());
+        assertEquals(thouchActions, homePage.touchActions.getText());
+
+
+    }
+
+
+
+
+
+
+
+
+
+    @ParameterizedTest
     @CsvFileSource(resources = "/names.csv", numLinesToSkip = 1)
     public void verifyNamesAndCar(String name) {
 
