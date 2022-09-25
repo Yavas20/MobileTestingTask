@@ -7,12 +7,17 @@ import com.Sendeo.pages.HomePage;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.Sendeo.utils.Driver;
+import com.Sendeo.utils.ExcelUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.Alert;
+
+import java.util.List;
+import java.util.Map;
 
 public class Tests {
 
@@ -49,9 +54,39 @@ public class Tests {
 
     }
 
+    public static List<Map<String, String>> getExcelData(){
+
+        ExcelUtil homePageText = new ExcelUtil("src/test/resources/homePageTexts.xlsx", "homepageTexts");
+        return homePageText.getDataList();
+    }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "", numLinesToSkip = 1)
+    @MethodSource("getExcelData")
+    public void TestWithExcel(Map<String , String> homePageTxts){
+
+        assertEquals(homePageTxts.get("chromeIcon"), homePage.chromeIcon.getAttribute("content-desc"));
+        assertEquals(homePageTxts.get("folderIcon"), homePage.folderIcon.getAttribute("content-desc"));
+        assertEquals(homePageTxts.get("showProgressBarButton"), homePage.showProgressBarButton.getText());
+        assertEquals(homePageTxts.get("acceptAddsCheckBox"), homePage.acceptAddsCheckBox.getText());
+        assertEquals(homePageTxts.get("displayTextWiev"), homePage.displayTextView.getText());
+        assertEquals(homePageTxts.get("displayAToast"), homePage.displayAToastButton.getText());
+        assertEquals(homePageTxts.get("displayWindoePopup"), homePage.displayPopUpWindow.getText());
+        assertEquals(homePageTxts.get("throwUnhandledException"), homePage.throwUnhandledException.getText());
+        assertEquals(homePageTxts.get("displayAndFocusOnLayout"), homePage.displayAndFocusOnLayout.getText());
+        assertEquals(homePageTxts.get("thouchActions"), homePage.touchActions.getText());
+    }
+
+
+
+
+
+
+
+
+
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/homepageTexts.csv", numLinesToSkip = 1)
     public void verifyHomePageTexts(String chromeIcon, String folderIcon, String showProgressBarButton,
                                     String acceptAddsCheckBox, String displayTextWiev,
                                     String displayAToast, String displayWindoePopup,
