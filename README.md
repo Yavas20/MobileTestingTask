@@ -55,15 +55,32 @@
 ### * I created ExcelUtil class to be able to use ready method for retrieving data from Excel file in Test class.
 
 ## 6)Test Cases:
+## Precondition for Test Cases:
 
-### Background: In every test user is on the home page.
-### Given User is on the home page
+* Background: In every test, user is on the home page.
+* Given User is on the home page
 
-        # 6.1) Test1 :
+         6.1) Test1(verifyDisplayTextViewMessage) :
         
-   Scenario: User should be able to click “Display text view” button and see the “Text is sometimes displayed” message
+     Scenario: User should be able to click “Display text view” button and see the “Text is sometimes displayed” message
 
-    When User clicks “Display text view” button
-    Then User should see the “Text is sometimes displayed” message
+     When User clicks “Display text view” button
+     Then User should see the “Text is sometimes displayed” message
+
+        6.2) Test2 (handleDisplayPopupWindow) :
+     
+     Scenario: User should be able to click “Display Popup Window” button and click any other buttons on the home page
+
+     When User clicks “Display Popup Window” button
+     Then Verify that other buttons on the home page can be clickable
+     
+        6.3) Test3 (verifyHomePageTexts) :
+        
+     Scenario: User should be able to see the texts of the homepage functions
+
+     Then User should be able to see the texts of the homepage functions
+     
+        6.4) Test4 () :
+
 
 
