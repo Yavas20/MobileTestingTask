@@ -15,14 +15,12 @@
 * JUnit5 for validation 
 * ApachePOI to retrieve data from Excel into pom.xml as dependencies. 
 
-`<dependencies>
+<dependencies>
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -33,14 +31,12 @@
             <artifactId>poi</artifactId>
             <version>5.2.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
-
-    </dependencies>´
+    </dependencies>
     
 ### I used Java as my programming language.
 ### I used Maven as a build automation tool. Maven has pom.xml file allows me to manage my dependencies/versions easily.
