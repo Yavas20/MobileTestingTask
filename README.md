@@ -15,7 +15,7 @@
 * JUnit5 for validation 
 * ApachePOI to retrieve data from Excel into pom.xml as dependencies. 
 
-...
+`
 <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
@@ -39,7 +39,7 @@
         </dependency>
     </dependencies>
     
-...
+`
  
     
      
