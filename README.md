@@ -1,19 +1,19 @@
 # MobileTestingTask
 ## Before starting to implement Mobile Automation Testing with Appium, 
 ### 1) I installed :
-** Android Studio
-** NodeJS
-** Appium Server
-** Appium Inspector
-** appium-doctor in CMD;
+* "Android Studio"
+* NodeJS
+* Appium Server
+* Appium Inspector
+* appium-doctor in CMD;
 ### 2) I set up ANDROID_HOME.
 ### 3) I created 
-** Android Emulator (Nexus S Android 5.1.1) 
-** Basic Maven project.
+* Android Emulator (Nexus S Android 5.1.1) 
+* Basic Maven project.
 ### 4) I added :
-** Appium client for java
-** JUnit5 for validation 
-** ApachePOI to retrieve data from Excel into pom.xml as dependencies.
+* Appium client for java
+* JUnit5 for validation 
+* ApachePOI to retrieve data from Excel into pom.xml as dependencies.
 
 ``
 
