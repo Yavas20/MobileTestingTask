@@ -47,7 +47,7 @@
 ## 5)Framework:
 ### * I used Java as my programming language.
 ### * I used Maven as a build automation tool. Maven has pom.xml file allows me to manage my dependencies/versions easily.
-### * I used Page Object Model to simplify managing and maintaing my framework for myself and others. This design pattern allows me to locate mobile web elements only once, in their respective classes so that if there are any problems with any mobile web elements, I know exactly where to go and how to fix it.
+### * I used Page Object Model to simplify managing and maintaing my framework for myself and others. This design pattern allows me to locate mobile web elements only once in their respective classes so that if there are any problems with any mobile web elements, I know exactly where to go and how to fix it.
 ### * I created Singleton Design Pattern to allow my framework to pass the same instance of my Appiumdriver in one session. I specified device type, model, application as DesiredCapabilities in Driver class.
 ### * I created a configuration.properties type of file where I keep the important test data about my framework. I keep Test data that can change the running flow of the whole framework, such as:platform, username/password, url.
 ### * I created utility class from existing java library to read from properties type of file. (ConfigurationReader)
@@ -89,6 +89,15 @@
     When User clicks “Touch Actions” button
     
     Then User should see the texts of the touch actions page on the screen
+    
+## 7) Bonus Activities:
+        7.1 Test cases and scripts for iOS:
+        
+### * It is required to:
+* Install Xcode 
+* Change DesiredCapabilities according to emulator
+* Use IOSDriver
+* Use suitable methods for IOS 
 
 
 
