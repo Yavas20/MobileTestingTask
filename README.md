@@ -15,7 +15,8 @@
 * JUnit5 for validation 
 * ApachePOI to retrieve data from Excel into pom.xml as dependencies. 
 
-`<dependencies>
+...
+<dependencies>
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -36,7 +37,10 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
-    </dependencies>`
+    </dependencies>
+    
+...
+ 
     
      
 ### I used Java as my programming language.
