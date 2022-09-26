@@ -1,20 +1,19 @@
 package com.Sendeo.test;
 
-import com.Sendeo.pages.ChromeIconPage;
-import com.Sendeo.pages.DisplayTextViewPage;
-import com.Sendeo.pages.FolderPage;
-import com.Sendeo.pages.HomePage;
+import com.Sendeo.pages.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.Sendeo.utils.Driver;
 import com.Sendeo.utils.ExcelUtil;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,7 @@ public class Tests {
 
     HomePage homePage = new HomePage();
     DisplayTextViewPage displayTextViewPage = new DisplayTextViewPage();
-    ChromeIconPage chromeIconPage = new ChromeIconPage();
-    FolderPage folderPage = new FolderPage();
+    TouchActionsPage touchActionsPage = new TouchActionsPage();
 
 
 
@@ -62,7 +60,7 @@ public class Tests {
 
     @ParameterizedTest
     @MethodSource("getExcelData")
-    public void TestWithExcel(Map<String , String> homePageTxts){
+    public void verifyHomePageTexts(Map<String, String> homePageTxts){
 
         assertEquals(homePageTxts.get("chromeIcon"), homePage.chromeIcon.getAttribute("content-desc"));
         assertEquals(homePageTxts.get("folderIcon"), homePage.folderIcon.getAttribute("content-desc"));
@@ -77,91 +75,30 @@ public class Tests {
     }
 
 
-
-
-
-
-
-
-
-
     @ParameterizedTest
-    @CsvFileSource(resources = "/homepageTexts.csv", numLinesToSkip = 1)
-    public void verifyHomePageTexts(String chromeIcon, String folderIcon, String showProgressBarButton,
-                                    String acceptAddsCheckBox, String displayTextWiev,
-                                    String displayAToast, String displayWindoePopup,
-                                    String throwUnhandledException, String displayAndFocusOnLayout,
-                                    String thouchActions) {
+    @CsvSource({"LAST GESTURE:, Gesture Type, Scale Factor: 1.0, Canvas"})
+    public void verifyTouchActionsPartTexts(String actionsHeader, String gestureType, String scaleFactor,
+                                            String canvas) {
 
-        assertEquals(chromeIcon, homePage.chromeIcon.getAttribute("content-desc"));
-        assertEquals(folderIcon, homePage.folderIcon.getAttribute("content-desc"));
-        assertEquals(showProgressBarButton, homePage.showProgressBarButton.getText());
-        assertEquals(acceptAddsCheckBox, homePage.acceptAddsCheckBox.getText());
-        assertEquals(displayTextWiev, homePage.displayTextView.getText());
-        assertEquals(displayAToast, homePage.displayAToastButton.getText());
-        assertEquals(displayWindoePopup, homePage.displayPopUpWindow.getText());
-        assertEquals(throwUnhandledException, homePage.throwUnhandledException.getText());
-        assertEquals(displayAndFocusOnLayout, homePage.displayAndFocusOnLayout.getText());
-        assertEquals(thouchActions, homePage.touchActions.getText());
+        homePage.touchActions.click();
 
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOf(touchActionsPage.lastGestureHeader));
 
-    }
+        assertEquals(actionsHeader, touchActionsPage.lastGestureHeader.getText().trim());
 
+        wait.until(ExpectedConditions.visibilityOf(touchActionsPage.gestureType));
+        assertEquals(gestureType, touchActionsPage.gestureType.getText());
 
+        wait.until(ExpectedConditions.visibilityOf(touchActionsPage.scaleFactor));
+        assertEquals(scaleFactor, touchActionsPage.scaleFactor.getText());
 
-
-
-
-
-
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/names.csv", numLinesToSkip = 1)
-    public void verifyNamesAndCar(String name) {
-
-     homePage.chromeIcon.click();
-     chromeIconPage.enterYourNameInputBox.click();
-     chromeIconPage.enterYourNameInputBox.clear();
-     chromeIconPage.enterYourNameInputBox.sendKeys(name);
-     chromeIconPage.volvoCar.click();
-     chromeIconPage.sendMeYourNameButton.click();
-
-     String expectedName = "\"" + name + "\"";
-     String actualName = chromeIconPage.yourNameIsData.getAttribute("content-desc");
-
-     assertEquals(expectedName, actualName);
-
-     String expectedCar = "\"Volvo\"";
-     String actualCar = chromeIconPage.yourNameIsData.getAttribute("content-desc");
-
-     assertEquals(expectedCar, actualCar);
-
-     chromeIconPage.goToHomeScreenButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(touchActionsPage.canvasButton));
+        assertEquals(canvas, touchActionsPage.canvasButton.getText());
 
 
     }
 
-    @Test
-    public void verifyNamesAndCars() {
-
-        homePage.chromeIcon.click();
-        //System.out.println(chromeIconPage.volvoCar.isDisplayed());
-        //chromeIconPage.goToHomeScreenButton.click();
-
-
-    }
-
-    @Test
-    public void verifyRegisterUserFunction(){
-
-        homePage.folderIcon.click();
-        folderPage.emailInputBox.click();
-        folderPage.passwordInputBox.click();
-        folderPage.nameInputBox.click();
-        folderPage.registerUserButton.click();
-
-
-    }
 
 
 }

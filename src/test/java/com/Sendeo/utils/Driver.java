@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -36,30 +37,24 @@ public class Driver {
                     }
                     driver = new AndroidDriver<>(url, desiredCapabilities);
                     break;
-                case "android-remote":
-                    DesiredCapabilities caps = new DesiredCapabilities();
+                case "sauce-mobile":
+                    MutableCapabilities caps = new MutableCapabilities();
+                    caps.setCapability("platformName","Android");
+                    caps.setCapability("appium:deviceName","Android GoogleAPI Emulator");
+                    caps.setCapability("appium:deviceOrientation", "portrait");
+                    caps.setCapability("appium:platformVersion","12.0");
+                    caps.setCapability("appium:automationName", "UiAutomator2");
+                    caps.setCapability("appium:app", "storage:filename=selendroid-test-app-0.17.0.apk");
+                    MutableCapabilities sauceOptions = new MutableCapabilities();
+                    sauceOptions.setCapability("build", "<your build id>");
+                    sauceOptions.setCapability("name", "<your test name>");
+                    caps.setCapability("sauce:options", sauceOptions);
 
-                    // Set your access credentials
-                    caps.setCapability("browserstack.user", "testuser_1PhU8f");
-                    caps.setCapability("browserstack.key", "qxU7LUK78o8BK1ki799f");
 
-                    // Set URL of the application under test
-                    caps.setCapability("app", "bs://e0ce6dfd61f8f7d9fd9c4fb11c746b65fd1d79f1");
 
-                    // Specify device and os_version for testing
-                    caps.setCapability("device", "OnePlus 8");
-                    caps.setCapability("os_version", "10.0");
-                    caps.setCapability("realMobile", "true");
-
-                    // Set other BrowserStack capabilities
-                    caps.setCapability("project", "My test appium automation");
-                    caps.setCapability("build", "Java Android");
-                    caps.setCapability("name", "Regression");
-
-                    // Initialise the remote Webdriver using BrowserStack remote URL
-                    // and desired capabilities defined above
                     try {
-                        driver = new AndroidDriver<>(new URL("http://hub.browserstack.com/wd/hub"), caps);
+                        URL url = new URL("https://EmreYavas:b2c7b98d-0e1e-42fb-b4cd-335d08b15189@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub");
+                        AppiumDriver driver = new AndroidDriver(url, caps);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
