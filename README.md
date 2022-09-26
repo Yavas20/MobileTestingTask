@@ -65,6 +65,7 @@
      Scenario: User should be able to click “Display text view” button and see the “Text is sometimes displayed” message
 
      When User clicks “Display text view” button
+     
      Then User should see the “Text is sometimes displayed” message
 
         6.2) Test2 (handleDisplayPopupWindow) :
@@ -72,6 +73,7 @@
      Scenario: User should be able to click “Display Popup Window” button and click any other buttons on the home page
 
      When User clicks “Display Popup Window” button
+     
      Then Verify that other buttons on the home page can be clickable
      
         6.3) Test3 (verifyHomePageTexts) :
@@ -80,7 +82,14 @@
 
      Then User should be able to see the texts of the homepage functions
      
-        6.4) Test4 () :
+        6.4) Test4 (verifyTouchActionsPartTexts) :
+
+   Scenario: User should be able to click “Touch Actions” button and see the texts of the this part on the screen
+
+    When User clicks “Touch Actions” button
+    
+    Then User should see the texts of the touch actions page on the screen
+
 
 
 
