@@ -13,9 +13,31 @@
 ### 4) I added :
 * Appium client for java
 * JUnit5 for validation 
-* ApachePOI to retrieve data from Excel into pom.xml as dependencies.
+* ApachePOI to retrieve data from Excel into pom.xml
+* Maven Surefire Plugin to run test scripts from command line as dependencies and plugins.
 
 ``
+
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <!-- <useUnlimitedThreads>true</useUnlimitedThreads> -->
+                    <threadCount>4</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/CukesRunner*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 <dependencies>
 
@@ -49,7 +71,7 @@
 ### * I used Maven as a build automation tool. Maven has pom.xml file allows me to manage my dependencies/versions easily.
 ### * I used Page Object Model to simplify managing and maintaing my framework for myself and others. This design pattern allows me to locate mobile web elements only once in their respective classes so that if there are any problems with any mobile web elements, I know exactly where to go and how to fix it.
 ### * I created Singleton Design Pattern to allow my framework to pass the same instance of my Appiumdriver in one session. I specified device type, model, application as DesiredCapabilities in Driver class.
-### * I created a configuration.properties type of file where I keep the important test data about my framework. I keep Test data that can change the running flow of the whole framework, such as:platform, username/password, url.
+### * I created a configuration.properties type of file where I keep the important test data about my framework. I keep Test data that can change the running flow of the whole framework, such as:platform, username/password.
 ### * I created utility class from existing java library to read from properties type of file. (ConfigurationReader)
 ### * I implemented the actual coding logic with JAVA-SELENIUM-JUNIT.
 ### * I created ExcelUtil class to be able to use ready method for retrieving data from Excel file in Test class.
@@ -66,7 +88,7 @@
 
      When User clicks “Display text view” button
      
-     Then User should see the “Text is sometimes displayed” message
+     Then User should see the “Text is sometimes displayed” message on the screen
 
         6.2) Test2 (handleDisplayPopupWindow) :
      
@@ -80,7 +102,7 @@
         
      Scenario: User should be able to see the texts of the homepage functions
 
-     Then User should be able to see the texts of the homepage functions
+     Then User should be able to see the texts of the homepage functions on the screen
      
         6.4) Test4 (verifyTouchActionsPartTexts) :
 
@@ -98,6 +120,16 @@
 * Change DesiredCapabilities according to emulator
 * Use IOSDriver
 * Use suitable methods for IOS 
+
+         7.2 To run codes from command line using Maven:
+        
+  ### * It is required to:
+  * Download and install apache-maven in local computer/laptop
+  * Add maven-sure-file plugin into pom.xml
+  * Go to project and right click with shift
+  * Select open in command line
+  * Type mvn clean test
+
 
 
 
