@@ -13,15 +13,17 @@
 ### 4) I added :
 * Appium client for java
 * JUnit5 for validation 
-* ApachePOI to retrieve data from Excel into pom.xml as dependencies. 
+* ApachePOI to retrieve data from Excel into pom.xml as dependencies.
 
-`
-<dependencies>
+``<dependencies>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -32,17 +34,17 @@
             <artifactId>poi</artifactId>
             <version>5.2.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
+
     </dependencies>
-    
-`
- 
-    
      
+``
+
 ### I used Java as my programming language.
 ### I used Maven as a build automation tool. Maven has pom.xml file allows me to manage my dependencies/versions easily.
 ### I used Page Object Model to simplify managing and maintaing my framework for myself and others. This design pattern allows me to locate mobile web elements only once, in their respective classes so that if there are any problems with any web elements, I know exactly where to go and how to fix it.
