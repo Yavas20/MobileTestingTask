@@ -36,8 +36,9 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
-    </dependencies>`
+    </dependencies>´
     
+     
 ### I used Java as my programming language.
 ### I used Maven as a build automation tool. Maven has pom.xml file allows me to manage my dependencies/versions easily.
 ### I used Page Object Model to simplify managing and maintaing my framework for myself and others. This design pattern allows me to locate mobile web elements only once, in their respective classes so that if there are any problems with any web elements, I know exactly where to go and how to fix it.
