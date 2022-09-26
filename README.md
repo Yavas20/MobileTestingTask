@@ -15,15 +15,15 @@
 * JUnit5 for validation 
 * ApachePOI to retrieve data from Excel into pom.xml as dependencies.
 
-``<dependencies>
-        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+``
+
+<dependencies>
+
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-
+        </dependency> 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -34,7 +34,6 @@
             <artifactId>poi</artifactId>
             <version>5.2.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
