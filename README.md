@@ -95,19 +95,21 @@
      
      Then Verify that other buttons on the home page can be clickable
      
-        6.3) Test3 (verifyHomePageTexts) :
+        6.3) Test3 (verifyTouchActionsPartTexts) :
         
-     Scenario: User should be able to see the texts of the homepage functions
-
-     Then User should be able to see the texts of the homepage functions on the screen
-     
-        6.4) Test4 (verifyTouchActionsPartTexts) :
-
-   Scenario: User should be able to click “Touch Actions” button and see the texts of the this part on the screen
+     Scenario: User should be able to click “Touch Actions” button and see the texts of the this part on the screen
 
     When User clicks “Touch Actions” button
     
     Then User should see the texts of the touch actions page on the screen
+     
+        6.4) Test4 (verifyHomePageTexts) :
+        
+     Scenario: User should be able to see the texts of the homepage functions
+
+     Then User should be able to see the texts of the homepage functions on the screen
+
+   
     
 ## 7) Bonus Activities:
         7.1 Test cases and scripts for iOS:
