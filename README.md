@@ -18,7 +18,7 @@
 
 ``
 
-<build>
+  <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -31,7 +31,7 @@
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
-                        <include>**/CukesRunner*.java</include>
+                        <include>**/Tests*.java</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -39,13 +39,16 @@
         </plugins>
     </build>
 
-<dependencies>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
-        </dependency> 
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -56,6 +59,7 @@
             <artifactId>poi</artifactId>
             <version>5.2.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -63,8 +67,10 @@
         </dependency>
 
     </dependencies>
-     
-``
+    
+    ``
+
+
 
 ## 5)Framework:
 ### * I used Java as my programming language.
