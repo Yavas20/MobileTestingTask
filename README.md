@@ -17,7 +17,6 @@
 * Maven Surefire Plugin to run test scripts from command line as dependencies and plugins.
 
 ``
-
   <build>
         <plugins>
             <plugin>
@@ -26,7 +25,6 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <parallel>methods</parallel>
-                    <!-- <useUnlimitedThreads>true</useUnlimitedThreads> -->
                     <threadCount>4</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
@@ -38,17 +36,12 @@
 
         </plugins>
     </build>
-
-
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -59,13 +52,11 @@
             <artifactId>poi</artifactId>
             <version>5.2.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
-
     </dependencies>
     
     ``
