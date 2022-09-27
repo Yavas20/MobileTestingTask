@@ -17,8 +17,6 @@
 * Maven Surefire Plugin to run test scripts from command line as dependencies and plugins.
 
 ``
-  <build>
-        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -33,9 +31,6 @@
                     </includes>
                 </configuration>
             </plugin>
-
-        </plugins>
-    </build>
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
