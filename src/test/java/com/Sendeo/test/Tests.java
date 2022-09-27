@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.Sendeo.utils.Driver;
 import com.Sendeo.utils.ExcelUtil;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -26,6 +29,13 @@ public class Tests {
 
 
 
+    @AfterEach
+    public void tearDown(){
+        Driver.closeDriver();
+    }
+
+
+    @DisplayName("verifyTextViewMessage")
     @ParameterizedTest
     @ValueSource(strings = {"Text is sometimes displayed"})
     public void verifyDisplayTextViewMessage(String message){
@@ -38,7 +48,7 @@ public class Tests {
 
     }
 
-
+    @DisplayName("handlePopupWindow")
     @Test
     public void handleDisplayPopupWindow(){
 
@@ -52,29 +62,7 @@ public class Tests {
 
     }
 
-    public static List<Map<String, String>> getExcelData(){
-
-        ExcelUtil homePageText = new ExcelUtil("src/test/resources/homePageTexts.xlsx", "homepageTexts");
-        return homePageText.getDataList();
-    }
-
-    @ParameterizedTest
-    @MethodSource("getExcelData")
-    public void verifyHomePageTexts(Map<String, String> homePageTxts){
-
-        assertEquals(homePageTxts.get("chromeIcon"), homePage.chromeIcon.getAttribute("content-desc"));
-        assertEquals(homePageTxts.get("folderIcon"), homePage.folderIcon.getAttribute("content-desc"));
-        assertEquals(homePageTxts.get("showProgressBarButton"), homePage.showProgressBarButton.getText());
-        assertEquals(homePageTxts.get("acceptAddsCheckBox"), homePage.acceptAddsCheckBox.getText());
-        assertEquals(homePageTxts.get("displayTextWiev"), homePage.displayTextView.getText());
-        assertEquals(homePageTxts.get("displayAToast"), homePage.displayAToastButton.getText());
-        assertEquals(homePageTxts.get("displayWindoePopup"), homePage.displayPopUpWindow.getText());
-        assertEquals(homePageTxts.get("throwUnhandledException"), homePage.throwUnhandledException.getText());
-        assertEquals(homePageTxts.get("displayAndFocusOnLayout"), homePage.displayAndFocusOnLayout.getText());
-        assertEquals(homePageTxts.get("thouchActions"), homePage.touchActions.getText());
-    }
-
-
+    @DisplayName("verifyTextsOfTouchActions")
     @ParameterizedTest
     @CsvSource({"LAST GESTURE:, Gesture Type, Scale Factor: 1.0, Canvas"})
     public void verifyTouchActionsPartTexts(String actionsHeader, String gestureType, String scaleFactor,
@@ -98,6 +86,35 @@ public class Tests {
 
 
     }
+
+
+
+    public static List<Map<String, String>> getExcelData(){
+
+        ExcelUtil homePageText = new ExcelUtil("src/test/resources/homePageTexts.xlsx", "homepageTexts");
+        return homePageText.getDataList();
+    }
+
+    @DisplayName("verifyTextsOfHomePage")
+    @ParameterizedTest
+    @MethodSource("getExcelData")
+    public void verifyHomePageTexts(Map<String, String> homePageTxts) {
+
+
+        assertEquals(homePageTxts.get("chromeIcon"), homePage.chromeIcon.getAttribute("content-desc"));
+        assertEquals(homePageTxts.get("folderIcon"), homePage.folderIcon.getAttribute("content-desc"));
+        assertEquals(homePageTxts.get("showProgressBarButton"), homePage.showProgressBarButton.getText());
+        assertEquals(homePageTxts.get("acceptAddsCheckBox"), homePage.acceptAddsCheckBox.getText());
+        assertEquals(homePageTxts.get("displayTextWiev"), homePage.displayTextView.getText());
+        assertEquals(homePageTxts.get("displayAToast"), homePage.displayAToastButton.getText());
+        assertEquals(homePageTxts.get("displayWindoePopup"), homePage.displayPopUpWindow.getText());
+        assertEquals(homePageTxts.get("throwUnhandledException"), homePage.throwUnhandledException.getText());
+        assertEquals(homePageTxts.get("displayAndFocusOnLayout"), homePage.displayAndFocusOnLayout.getText());
+        assertEquals(homePageTxts.get("thouchActions"), homePage.touchActions.getText());
+    }
+
+
+
 
 
 
